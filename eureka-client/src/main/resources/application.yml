@@ -6,7 +6,10 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://admin:123456@127.0.0.1:8766/eureka/,http://admin:123456@127.0.0.1:8762/eureka/
+      #注册中心集群配置
+#      defaultZone: http://admin:123456@127.0.0.1:8766/eureka/,http://admin:123456@127.0.0.1:8762/eureka/
+      # 密码校验
+      defaultZone: http://admin:123456@127.0.0.1:8762/eureka/
   instance:
 
     instance-id: ${spring.application.name}:${server.port}

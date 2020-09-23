@@ -10,10 +10,11 @@ spring:
       password: 123456
 eureka:
   client:
-#    register-with-eureka: false
-#    fetch-registry: false
-    service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:8766/eureka/
+    # 本服务实例不去注册
+    register-with-eureka: false
+    fetch-registry: false
+#    service-url:
+#      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:8766/eureka/
 
   instance:
 
