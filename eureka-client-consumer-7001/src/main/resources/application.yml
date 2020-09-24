@@ -1,14 +1,14 @@
+server:
+  port: 7001
+
+
 spring:
   application:
-    name: client02
-server:
-  port: 8761
+    name: consumer1
+
 eureka:
   client:
     service-url:
-      #注册中心集群配置
-#      defaultZone: http://admin:123456@127.0.0.1:8766/eureka/,http://admin:123456@127.0.0.1:8762/eureka/
-      # 密码校验
       defaultZone: http://admin:123456@127.0.0.1:8762/eureka/
   instance:
 

@@ -19,6 +19,7 @@
         <module>eureka-client-2</module>
         <module>eureka-server</module>
         <module>eureka-server-02</module>
+        <module>eureka-client-consumer-7001</module>
     </modules>
 
 
