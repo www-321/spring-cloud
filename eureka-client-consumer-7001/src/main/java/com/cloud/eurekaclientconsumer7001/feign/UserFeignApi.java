@@ -1,7 +1,7 @@
 package com.cloud.eurekaclientconsumer7001.feign;
 
+import com.cloud.eurekaclientconsumer7001.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @FeignClient(value = "CLIENT02",configuration = FeignConfig.class)

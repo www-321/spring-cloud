@@ -1,10 +1,9 @@
-package com.cloud.eurekaclientconsumer7001.feign;
+package com.cloud.eurekaclientconsumer7001.config;
 
 import feign.Logger;
 import feign.Request;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 
 public class FeignConfig {

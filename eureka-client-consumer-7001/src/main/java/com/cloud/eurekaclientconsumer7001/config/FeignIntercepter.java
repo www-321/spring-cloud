@@ -1,4 +1,4 @@
-package com.cloud.eurekaclientconsumer7001.feign;
+package com.cloud.eurekaclientconsumer7001.config;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;

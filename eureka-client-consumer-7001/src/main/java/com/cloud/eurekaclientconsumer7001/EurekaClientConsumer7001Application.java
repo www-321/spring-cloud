@@ -8,6 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 @EnableFeignClients(basePackages = "com.cloud.eurekaclientconsumer7001")
 @SpringBootApplication
@@ -18,10 +19,15 @@ public class EurekaClientConsumer7001Application {
         SpringApplication.run(EurekaClientConsumer7001Application.class, args);
     }
 
+
+
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
-        return new RestTemplate();
+        HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
+        factory.setReadTimeout(10000);
+        factory.setConnectTimeout(20000);
+        return new RestTemplate(factory);
     }
 
     @Bean
