@@ -4,6 +4,7 @@ import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients(basePackages = "com.cloud.eurekaclientconsumer7001")
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableCircuitBreaker
 public class EurekaClientConsumer7001Application {
 
     public static void main(String[] args) {
@@ -24,10 +26,10 @@ public class EurekaClientConsumer7001Application {
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
-        HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
+        /*HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
         factory.setReadTimeout(10000);
-        factory.setConnectTimeout(20000);
-        return new RestTemplate(factory);
+        factory.setConnectTimeout(20000);*/
+        return new RestTemplate();
     }
 
     @Bean
