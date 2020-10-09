@@ -33,7 +33,8 @@ public class ConsumerController {
         //1，异常情况
         //int i = id / (id - 2);
         //2，超时熔断
-        Thread.sleep(2000);
+//       Thread.sleep(20000);
+//        return "id";
         return userFeignApi.getUser(id+"", "wuquan");
     }
 

@@ -22,6 +22,9 @@ ribbon:
   ReadTimeout: 7000
   ###指的是建立连接后从服务器读取到可用资源所用的时间
   ConnectTimeout: 7000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+
 # feign 开启支持hystrix
 feign:
   hystrix:
@@ -33,20 +36,25 @@ feign:
         readTimeout: 4000
         connectTimeout: 4000
       # 指定客户端服务实例
-      CLIENT02:
-        readTimeout: 11000
-        connectTimeout: 11000
+#      CLIENT02:
+#        readTimeout: 11000
+#        connectTimeout: 11000
 logging:
   level:
     com.cloud.eurekaclientconsumer7001.feign: debug
 hystrix:
   command:
-    CONSUMER1#get(Integer):
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1000
+    #局部关闭熔断
+#    UserFeignApi#getUser(String,String):
+#      enabled: false
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 1000
     default:
+      # 全局开启
+#     circuitBreaker:
+#       enabled: true
      execution:
        isolation:
          #  隔离策略

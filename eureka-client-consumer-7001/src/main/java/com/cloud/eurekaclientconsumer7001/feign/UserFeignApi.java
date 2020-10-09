@@ -5,7 +5,8 @@ import com.cloud.eurekaclientconsumer7001.config.UserFeignApiFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(value = "CLIENT02",configuration = FeignConfig.class, fallback = UserFeignApiFallback.class)
+//@FeignClient(value = "CLIENT02",configuration = FeignConfig.class, fallback = UserFeignApiFallback.class)
+@FeignClient(value = "CLIENT02", fallback = UserFeignApiFallback.class)
 public interface UserFeignApi {
 
     @GetMapping("/get/{id}")
