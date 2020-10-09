@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.cloud.eurekaclientconsumer7001.feign.UserFeignApi;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,14 +24,16 @@ public class ConsumerController {
 
 
     @HystrixCommand(fallbackMethod = "fallback1",commandProperties = {
-        //@HystrixProperty(name = "", value = ""), @HystrixProperty(name = "", value = "")
+            //超时时间
+
+       // @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
     })
     @GetMapping("get/{id}")
     public Object get(@PathVariable Integer id) throws InterruptedException {
         //1，异常情况
-        int i = id / (id - 2);
+        //int i = id / (id - 2);
         //2，超时熔断
-        //Thread.sleep(100000);
+        Thread.sleep(2000);
         return userFeignApi.getUser(id+"", "wuquan");
     }
 

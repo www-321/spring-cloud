@@ -13,7 +13,9 @@ public class ProductController {
 
 
     @GetMapping("get/{id}")
-    public String cons(@PathVariable String id) {
+    public String cons(@PathVariable String id) throws InterruptedException {
+        Thread.sleep(5000);
+
         return "from 8763" + id;
     }
 
