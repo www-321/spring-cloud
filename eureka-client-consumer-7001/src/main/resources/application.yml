@@ -17,14 +17,16 @@ eureka:
     prefer-ip-address: true
 
 # ribbon 超时全局配置
-#ribbon:
-#  ReadTimeout: 3000
-#  ConnectTimeout: 3000
-
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+# feign 开启支持hystrix
+feign:
+  hystrix:
+    enabled: true
 logging:
   level:
     com.cloud.eurekaclientconsumer7001.feign: debug
-
 hystrix:
   command:
    default:
@@ -32,11 +34,7 @@ hystrix:
      isolation:
        #  隔离策略
        strategy: THREAD
-
-
-
-
-
-
-
-
+management:
+  endpoint:
+    health:
+      show-details: always
