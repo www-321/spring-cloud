@@ -1,12 +1,10 @@
 package com.cloud.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cloud.demo.NssaConfig;
+import com.cloud.demo.config.NssaConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 
