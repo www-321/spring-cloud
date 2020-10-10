@@ -1,15 +1,1 @@
 
-spring:
-  application:
-    name: client02
-server:
-  port: 8763
-eureka:
-  client:
-    service-url:
-      defaultZone: http://admin:123456@127.0.0.1:8762/eureka/
-  instance:
-
-    instance-id: ${spring.application.name}:${server.port}
-
-    prefer-ip-address: true

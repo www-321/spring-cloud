@@ -1,0 +1,39 @@
+server:
+  port: 8081
+# http://localhost:8081/application/prod/main
+# http://localhost:8081/main/application-prod.yml
+#  /{application}/{profile}[/{label}]
+#  /{application}-{profile}.yml
+#  /{label}/{application}-{profile}.yml
+#  /{application}-{profile}.properties
+#  /{label}/{application}-{profile}.properties
+spring:
+  application:
+    name: config
+  profiles:
+    # \u672C\u5730\u914D\u7F6E
+    active: native
+  cloud:
+    config:
+      server:
+        #\u672C\u5730\u914D\u7F6E
+        bootstrap: true
+        native:
+          search-locations: file:F:\config
+        #\u8FDC\u7A0B\u914D\u7F6E
+#        git:
+#          uri: https://github.com/www-321/cloud-config.git
+#          password: hero.wuquan5
+#          username: www-321
+#          default-label: main
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@127.0.0.1:8762/eureka/
+  instance:
+
+    instance-id: ${spring.application.name}:${server.port}
+
+    prefer-ip-address: true

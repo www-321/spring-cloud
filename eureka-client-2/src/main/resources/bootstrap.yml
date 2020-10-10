@@ -1,0 +1,26 @@
+
+spring:
+  application:
+    name: client02
+  cloud:
+    config:
+      profile: prod
+#      uri: http://localhost:8081
+#      name: client02
+      discovery:
+        enabled: true
+        service-id: config
+#    远程配置
+#    config:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               9
+#      uri: http://127.0.0.1:8081
+#      label: main
+#      profile: prod
+
+# 如果上面 discovery 配置了enabled: true，此处注册中心必须写在bootstrap.yml中，不然无法查找到config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@127.0.0.1:8762/eureka/
+#  instance:
+#    instance-id: ${spring.application.name}:${server.port}
+#    prefer-ip-address: true
