@@ -4,10 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.cloud.demo.config.NssaConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-
+@RefreshScope
 @RestController
 public class ProductController {
 
@@ -16,6 +17,11 @@ public class ProductController {
     private NssaConfig nssaConfig;
     @Value("${name}")
     private String name;
+
+    @Value("${password}")
+    private String password;
+
+
 
     @GetMapping("get/{id}")
     public String cons(@PathVariable String id) throws InterruptedException {
@@ -26,7 +32,7 @@ public class ProductController {
 
     @GetMapping("get/name")
     public String name() {
-       return name + nssaConfig.getIp() + nssaConfig.getPort();
+       return name + nssaConfig.getIp() + nssaConfig.getPort()+"***********"+password;
     }
 
     @PostMapping(value = "addUser")

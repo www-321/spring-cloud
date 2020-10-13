@@ -11,19 +11,19 @@ spring:
   application:
     name: config
   profiles:
-    # \u672C\u5730\u914D\u7F6E
+    #本地配置文件
     active: native
   cloud:
     config:
       server:
-        #\u672C\u5730\u914D\u7F6E
+        #本地配置文件
         bootstrap: true
         native:
           search-locations: file:F:\config
         #\u8FDC\u7A0B\u914D\u7F6E
   rabbitmq:
-    username: user
-    password: password
+    username: admin
+    password: admin
     port: 5672
     host: localhost
 #        git:
