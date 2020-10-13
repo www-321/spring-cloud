@@ -21,6 +21,11 @@ spring:
         native:
           search-locations: file:F:\config
         #\u8FDC\u7A0B\u914D\u7F6E
+  rabbitmq:
+    username: user
+    password: password
+    port: 5672
+    host: localhost
 #        git:
 #          uri: https://github.com/www-321/cloud-config.git
 #          password: hero.wuquan5
@@ -37,3 +42,12 @@ eureka:
     instance-id: ${spring.application.name}:${server.port}
 
     prefer-ip-address: true
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # 不能用"" 双引号
+        include: '*'

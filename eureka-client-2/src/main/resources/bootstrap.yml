@@ -2,6 +2,11 @@
 spring:
   application:
     name: client02
+  rabbitmq:
+    password: password
+    username: user
+    host: localhost
+    port: 5672
   cloud:
     config:
       profile: prod
@@ -25,9 +30,12 @@ eureka:
 #    instance-id: ${spring.application.name}:${server.port}
 #    prefer-ip-address: true
 
+
+
 # 暴露端口用于刷新配置
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        # 不能用"" 双引号
+        include: '*'

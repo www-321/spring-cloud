@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cloud.eurekaclientconsumer7001.feign.UserFeignApi;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,5 +55,9 @@ public class ConsumerController {
         Object o1 = userFeignApi.postUser(s);
         System.out.println(o1);
         return o1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(System.currentTimeMillis() - 636480000000L);
     }
 }
