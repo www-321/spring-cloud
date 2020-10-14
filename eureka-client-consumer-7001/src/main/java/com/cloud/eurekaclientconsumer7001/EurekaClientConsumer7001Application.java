@@ -2,6 +2,7 @@ package com.cloud.eurekaclientconsumer7001;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCircuitBreaker
+@EnableRabbit
 public class EurekaClientConsumer7001Application {
 
     public static void main(String[] args) {

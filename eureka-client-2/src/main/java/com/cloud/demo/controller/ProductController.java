@@ -2,12 +2,15 @@ package com.cloud.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cloud.demo.config.NssaConfig;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
+
 @RefreshScope
 @RestController
 public class ProductController {
@@ -21,6 +24,13 @@ public class ProductController {
     @Value("${password}")
     private String password;
 
+    @Autowired
+    RabbitTemplate rabbitTemplate;
+
+    @GetMapping("send")
+    public void send() {
+        rabbitTemplate.convertAndSend("directExchange","directKey", UUID.randomUUID().toString());
+    }
 
 
     @GetMapping("get/{id}")
