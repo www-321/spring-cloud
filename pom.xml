@@ -22,6 +22,7 @@
         <module>eureka-client-consumer-7001</module>
         <module>turbine</module>
         <module>dashboard-6001</module>
+        <module>cloud-stream-8001</module>
         <module>config-8081</module>
     </modules>
 

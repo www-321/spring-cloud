@@ -1,0 +1,9 @@
+server:
+  port: 8001
+
+spring:
+  cloud:
+    stream:
+      default-binder: rabbit
+
+
