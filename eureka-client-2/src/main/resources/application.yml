@@ -1,1 +1,15 @@
 
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    password: password
+    username: user
+    # 缺人发送到交换机
+    publisher-confirms: true
+    # 确认发送到队列
+    publisher-returns: true
+
+
+
+
