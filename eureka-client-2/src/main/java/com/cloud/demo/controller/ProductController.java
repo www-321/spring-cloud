@@ -23,8 +23,6 @@ public class ProductController {
 
     @Autowired
     private NssaConfig nssaConfig;
-    @Value("${name}")
-    private String name;
 
 
     @Autowired
@@ -98,7 +96,7 @@ public class ProductController {
 
     @GetMapping("get/name")
     public String name() {
-       return name + nssaConfig.getIp() + nssaConfig.getPort()+"***********";
+       return nssaConfig.getIp() + nssaConfig.getPort()+"***********";
     }
 
     @PostMapping(value = "addUser")
