@@ -24,6 +24,9 @@
         <module>dashboard-6001</module>
         <module>cloud-stream-8001</module>
         <module>config-8081</module>
+        <module>prod-client-9002</module>
+        <module>prod-client-9001</module>
+        <module>prod-client-03</module>
     </modules>
 
 
