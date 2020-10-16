@@ -16,3 +16,20 @@ eureka:
 spring:
   application:
     name: zuul
+zuul:
+  prefix: /api/v1
+  # 是否剥离前缀
+  strip-prefix: true
+  # http://localhost:5001/prod-client-03/prod3/del_user，直接通过微服务名称转发请求
+  #关闭所有微服务实例名称
+  ignored-services: '*'
+  # 指定名称和路径
+  routes:
+#       prod-client-03: /prod-client/** #写法2
+      client-03:
+        path: /myclient03/**
+        serviceId: PROD-CLIENT-03
+
+logging:
+  level:
+    com.netflix: debug

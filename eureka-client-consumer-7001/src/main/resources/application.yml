@@ -48,6 +48,7 @@ logging:
   level:
     com.cloud.eurekaclientconsumer7001.feign: debug
     com.cloud.springframework.sleuth: debug
+hystrix:
   command:
     #局部关闭熔断
 #    UserFeignApi#getUser(String,String):
