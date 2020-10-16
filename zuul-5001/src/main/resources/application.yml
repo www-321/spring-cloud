@@ -18,7 +18,7 @@ spring:
     name: zuul
 zuul:
   prefix: /api/v1
-  # 是否剥离前缀
+  # 是否剥离前缀，剥离目标服务的servlet-context-path
   strip-prefix: true
   # http://localhost:5001/prod-client-03/prod3/del_user，直接通过微服务名称转发请求
   #关闭所有微服务实例名称
