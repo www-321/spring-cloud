@@ -18,7 +18,9 @@ spring:
     name: zuul
 zuul:
   prefix: /api/v1
-  # 是否剥离前缀，剥离目标服务的servlet-context-path
+  # 是否剥离前缀,
+  #1,true:请求路由到具体服务地址时候，真是请求路径不带prefix (localhost:8001/prod/get_user)
+  #2,false: 请求路由到具体服务地址时候，真是请求路径带prefix（localhost:8001/api/v1/prod/get_user）,所以此时 目标服务需要设置servlet-context-path=/api/v1
   strip-prefix: true
   # http://localhost:5001/prod-client-03/prod3/del_user，直接通过微服务名称转发请求
   #关闭所有微服务实例名称
@@ -29,6 +31,13 @@ zuul:
       client-03:
         path: /myclient03/**
         serviceId: PROD-CLIENT-03
+        # 局部配置 /api/v1/v2
+#        strip-prefix: false
+#        prefix: /v2
+  #保护敏感路径，通过网关访问不到
+  ignored-patterns: /**/admin/**
+  sensitive-headers:
+
 
 logging:
   level:

@@ -2,8 +2,8 @@
 
 server:
   port: 9003
-#  servlet:
-#    context-path: /client3
+  servlet:
+    context-path: /api/v1
 
 
 
