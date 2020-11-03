@@ -18,4 +18,15 @@ public class FeignController {
     public String get(@PathVariable String id, String name) {
         return prodClient01FeignApi.getUser(id);
     }
+
+    @GetMapping("/get")
+    public String get1( ) {
+        return "client 9001";
+    }
+
+    @GetMapping("/client1/get")
+    public String ge2t1( ) {
+        return "client1  get 9001  ";
+    }
+
 }

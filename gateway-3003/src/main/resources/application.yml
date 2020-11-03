@@ -1,0 +1,47 @@
+server:
+  port: 3003
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        # http://localhost:3003/client1/get \u8DEF\u7531\u5230 -> http://PROD-CLIENT-01/client1/get
+        - id: client9001
+          uri: lb://PROD-CLIENT-01
+          predicates:
+            - Path=/client1/**
+            # \u67E5\u8BE2\u53C2\u6570\u5E26\u6709\uFF08name=wuquan&age=18\uFF09
+#            - Query=name,wuquan
+#            - Query=age,18
+          filters:
+            # \u6DFB\u52A0\u53C2\u6570\u8FC7\u6EE4\u5668
+            - AddRequestParameter=name,wuquan
+            #\u7194\u65AD\u6574\u5408,\u9700\u8981\u52A0\u5165hystrix\u4F9D\u8D56
+#            - Hystrix=hystrix
+#            - name: Hystrix    #hystrix \u7684commandName
+#                args:
+#                  name:
+#                  fallbackUri: forward:/fallback1
+
+        - id: client9002
+          uri: lb://PROD-CLIENT-02
+          predicates:
+            - Path=/client2/**
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@127.0.0.1:8762/eureka/
+  instance:
+
+    instance-id: ${spring.application.name}:${server.port}
+
+    prefer-ip-address: true
+
+
+

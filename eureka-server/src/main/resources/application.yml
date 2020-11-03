@@ -9,6 +9,9 @@ spring:
       name: admin
       password: 123456
 eureka:
+  server:
+    enable-self-preservation: true
+
   client:
     # 本服务实例不去注册
     register-with-eureka: false
