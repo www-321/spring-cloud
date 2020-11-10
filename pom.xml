@@ -27,7 +27,7 @@
         <module>prod-client-9001</module>
         <module>prod-client-03</module>
         <module>zuul-5001</module>
-        <module>gateway-3003</module>
+<!--        <module>gateway-3003</module>-->
     </modules>
 
 

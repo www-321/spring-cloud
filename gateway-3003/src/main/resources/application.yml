@@ -21,17 +21,47 @@ spring:
             - AddRequestParameter=name,wuquan
             #熔断整合,需要加入hystrix依赖
 #            - Hystrix=hystrix
-#            - name: Hystrix    #hystrix \u7684commandName
+#            - name: Hystrix    #hystrix 的 commandName
 #                args:
-#                  name:
+#                  name: default
 #                  fallbackUri: forward:/fallback1
 
+        # 限流
         - id: client9002
           uri: lb://PROD-CLIENT-02
           predicates:
             - Path=/client2/**
+        - id: limit-route
+          uri: lb://PROD-CLIENT-01
+          predicates:
+            - Path: /limit_client/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                #用于限流的键的解析器的 Bean 对象的名字。
+                #它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象。
+                key-resolver: '#{@hostAddrKeyResolver}'
+                #令牌桶每秒填充平均速率。
+                redis-rate-limiter.replenishRate: 1
+                # 令牌桶容量
+                redis-rate-limiter.burstCapacity: 3
+  redis:
+    host: localhost
+    port: 6379
+    password:
 
 
+
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 3000
 
 eureka:
   client:
