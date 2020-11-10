@@ -8,18 +8,18 @@ spring:
     gateway:
       enabled: true
       routes:
-        # http://localhost:3003/client1/get \u8DEF\u7531\u5230 -> http://PROD-CLIENT-01/client1/get
+        # http://localhost:3003/client1/get 路由到 -> http://PROD-CLIENT-01/client1/get
         - id: client9001
           uri: lb://PROD-CLIENT-01
           predicates:
             - Path=/client1/**
-            # \u67E5\u8BE2\u53C2\u6570\u5E26\u6709\uFF08name=wuquan&age=18\uFF09
+            # 查询参数带有（name=wuquan&age=18）
 #            - Query=name,wuquan
 #            - Query=age,18
           filters:
-            # \u6DFB\u52A0\u53C2\u6570\u8FC7\u6EE4\u5668
+            # 添加参数过滤器
             - AddRequestParameter=name,wuquan
-            #\u7194\u65AD\u6574\u5408,\u9700\u8981\u52A0\u5165hystrix\u4F9D\u8D56
+            #熔断整合,需要加入hystrix依赖
 #            - Hystrix=hystrix
 #            - name: Hystrix    #hystrix \u7684commandName
 #                args:
