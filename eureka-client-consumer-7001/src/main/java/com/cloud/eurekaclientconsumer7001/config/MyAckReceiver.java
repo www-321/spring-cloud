@@ -3,12 +3,15 @@ package com.cloud.eurekaclientconsumer7001.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
+
+import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 import java.util.Map;
-
+@ComponentScan()
 @Configuration
 public class MyAckReceiver  implements ChannelAwareMessageListener {
     @Override

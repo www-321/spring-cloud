@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: nacos-81
+
+
+
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: localhost:8848
