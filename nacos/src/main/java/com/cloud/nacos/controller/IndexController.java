@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-//    @Value("${name}")
-//    private String port;
+    @Value("${server.port}")
+    private String port;
 
     @Autowired
     private FeignService feignService;
@@ -24,7 +24,7 @@ public class IndexController {
 
     @GetMapping("port")
     public String get1() {
-        return "88";
+        return port;
     }
 
 }
