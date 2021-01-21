@@ -11,7 +11,8 @@ spring:
         enabled: true
         server-addr: localhost:8848
       config:
-        file-extension: yaml
+        # 此处和nacos配置文件扩展名一致
+        file-extension: yml
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
 
 
